@@ -1,0 +1,1 @@
+C:\Users\laure\OneDrive\Documents\GitHub\Csharp\Day3\carSaleInheritance2\carSaleInheritance2\bin\Debug\carSaleInheritance2.exe.config

@@ -14,7 +14,19 @@ namespace carSaleInheritance
         public string model;
         public string color;
         public int price;
-        public Boolean SoldVehicle;
+        public Boolean Sold;
+
+        // Declare a Vehicle method in Vehicle class
+        public void AddVehicle(string type, string name, string model, string color, int price)
+        {
+            this.type = type;
+            this.name = name;
+            this.model = model;
+            this.color = color;
+            this.price = price;
+            this.Sold = false;
+            Vehicle.numberOfVehicle++;
+        }
 
         //static
         public static int numberOfVehicle;
@@ -23,11 +35,11 @@ namespace carSaleInheritance
 
 
         //Create a method  for Vehicle sold
-        public void soldCar(bool isSoldVehicle, int price)
+        public void sold(bool isSold, int price)
         {
-            this.SoldVehicle = isSoldVehicle;
+            this.Sold = isSold;
             this.price = price;
-            if (isSoldVehicle)
+            if (isSold)
             {
                 totalValueSold += price;
                 totalValueStock -= price;
@@ -41,24 +53,14 @@ namespace carSaleInheritance
             Vehicle.numberOfVehicle--;
         }
 
-        // Declare a Vehicle method in Vehicle class
-        public void AddVehicle(string type, string name, string model, string color, int price)
-        {
-            this.type = type;
-            this.name = name;
-            this.model = model;
-            this.color = color;
-            this.price = price;
-            this.SoldVehicle = false;
-            Vehicle.numberOfVehicle++;
-        }
-             // Creating a new method for list car 
-    public void ListVehicle()
+
+        // Creating a new method for list Vehicler
+        public void ListVehicle()
         {
             Console.WriteLine("the details of the car are ");
             Console.WriteLine("Make and Model: {0} {1} {2}, {3} :", name, model, color, price);
 
-            if (SoldVehicle)
+            if (Sold)
             {
                 Console.WriteLine("the car is sold");
 
@@ -69,13 +71,34 @@ namespace carSaleInheritance
 
             }
             Console.WriteLine();
-        }//end listcar method
+        }
+        public static void DisplayAllVehicle(List<Vehicle> allVehicles)
+        {
+            foreach (Vehicle item in allVehicles)
+            {
+                Console.WriteLine("The details of th Vehicle are:");
+                Console.WriteLine("Make and model: {0} {1} {2}, {3}", item.name, item.model, item.color, item.price);
 
+                if (item.Sold)
+                {
+                    Console.WriteLine("This Vehicle has been sold");
+                }
 
-    
-    }// end of Vehicle class
-    
-   
+                else
+                {
+                    Console.WriteLine("This Vehicle is unsold");
+
+                }// end of else
+
+                Console.WriteLine();
+
+            }//end of if 
+            Console.WriteLine(" The total  value of Vehicle sold is : £ {0}", Vehicle.totalValueSold);
+            Console.WriteLine("The total value of Vehicle stock is : £ {0}", Vehicle.totalValueStock);
+            Console.WriteLine();
+        }// end of  DisplayAllCars method
+
+    }//end listcar method
 
     // inherited class car from Vehicle
     class Car : Vehicle
@@ -86,96 +109,86 @@ namespace carSaleInheritance
             AddVehicle(type = "car", name, model, color, price);
             numberOfCars++;
         }
-
-
-            }//end of car class
-
-
-
-
-
-
-      
-
-        
-
-        public static void DisplayAllCars(List<Car> allcars)
+        public void Soldcar(bool isSold, int price)
         {
-            foreach (Car item in allcars)
-            {
-                Console.WriteLine("The details of th car are:");
-                Console.WriteLine("Make and model: {0} {1} {2}, {3}", item.name, item.model, item.color, item.price);
-
-
-
-                if (item.SoldCar)
-                {
-                    Console.WriteLine("This car has been sold");
-
-                }// end of if
-
-                else
-                {
-                    Console.WriteLine("This car is unsold");
-
-                }// end of else
-
-                Console.WriteLine();
-
-            }//end of if 
-            Console.WriteLine(" The total  value of car sold is : £ {0}", Car.totalValueSold);
-            Console.WriteLine("The total value of car stock is : £ {0}", Car.totalValueStock);
-            Console.WriteLine();
-        }// end of  DisplayAllCars method
-
+            sold(isSold, price);
+            numberOfCars--;
+        }
     }//end car class
 
+    class Motorcycle : Vehicle
+    {// beginning of Motorcycle
+        public static int numberOfBike;
+        public void AddMotorbike(string name, string model, string color, int price)
+        {
+            AddVehicle(type = "Motorbike", name, model, color, price);
+            numberOfBike++;
+        }
+        public void SoldMotorbike(bool isSold, int price)
+        {
+            sold(isSold, price);
+            numberOfBike--;
+        }
+    }//end of Motorcycle class
     class program
     {
-
         static void Main(string[] args)
 
-        {
 
-            Car.numberOfCar = 0;
-            List<Car> allcars = new List<Car>();
+            Car.numberOfCars = 0;
+            Motorcycle.numberOfBike = 0;
 
-            //Calling the car method 3 times to create new objects
-            Car myCar = new Car();
-            myCar.AddCar("Peugoet", " 206", "blue", 15000);
-            allcars.Add(myCar);
+               //Calling the car method 3 times to create new objects
+               List<Vehicle> allVehicles = new List<Vehicle>();
 
-            Car myCar1 = new Car();
-            myCar1.AddCar("Citroen", "C3", "grey", 25000);
-            allcars.Add(myCar1);
+        Car myCar = new Car();
+        myCar.AddCar("Peugoet", " 206", "blue", 15000);
+                allVehicles.Add(myCar);
 
-            Car myCar2 = new Car();
-            myCar2.AddCar("Renault", "Espace", "green", 10000);
-            allcars.Add(myCar2);
+                Car myCar1 = new Car();
+        myCar1.AddCar("Citroen", "C3", "grey", 25000);
+                allVehicles.Add(myCar1);
 
+                Car myCar2 = new Car();
+        myCar2.AddCar("Renault", "Espace", "green", 10000);
+                allVehicles.Add(myCar2);
+            
+                Motorcycle MyBike = new Motorcycle();
+        MyBike.AddMotorbike("Triumph", "Tiger 800", 10000);
+                allVehicles.Add(MyBike);
+
+                Motorcycle Mybike2 = new Motorcycle();
+        MyBike2.AddMotorbike("Vespa", "Sprint 150", 2500);
+                allVehicles.Add(MyBike2);
+
+             Console.WriteLine("Total number of cars in stock is: {0}", Car.numberOfCars);
+            Console.WriteLine("Total number of motorbikes in stock is: {0}", Motorcycle.numberOfBike);
+            Console.WriteLine();
+       
+Vehicle.DisplayAllVehicles(allVehicles);
+                        //calling the sold method 
+            myCar.soldCar(true, 15000);
+            myBike2.soldBike(true, 22000);
+
+            Console.WriteLine("Total number of cars in sold is: {0}", Car.numberOfCars);
+            Console.WriteLine("Total number of motorbikes in sold is: {0}", Motorcycle.numberOfBike);
+            Console.WriteLine();
+            Vehicle.DisplayAllVehicle(allVehicles);
             //get the total value of the stock
-            foreach (Car item in allcars)
+            foreach (Vehicle item in allVehicles)
             {
-                Car.totalValueStock += item.price;
+                Vehicle.totalValueStock += item.price;
             }
 
-            Car.DisplayAllCars(allcars);
-
-            //calling the sold method 
-            myCar.soldCar(true, 15000);
-            myCar2.soldCar(true, 22000);
-            // myCar1.soldCar(true, 25000);
-
-            //display cars data
-            Console.WriteLine("the name of car sold is", Car.numberOfCar);
-            Car.DisplayAllCars(allcars);
+    Vehicle.DisplayAllVehicle(allVehicle);
 
 
+    //display cars data
+    Console.WriteLine("the name of car sold is", numberOfVehicle);
+       
+            Vehicle.DisplayAllVehicle(allVehicle);
 
-        }//main
 
-    }//end program class
-}
-        }
-    }
-}
+            }//end of Vehicle 
+  //end of program
+    
