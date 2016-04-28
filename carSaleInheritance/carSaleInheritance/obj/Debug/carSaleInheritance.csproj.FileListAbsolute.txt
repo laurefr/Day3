@@ -1,3 +1,9 @@
 C:\Users\student\Documents\GitHub\Csharp\carSaleInheritance\carSaleInheritance\bin\Debug\carSaleInheritance.exe.config
 C:\Users\laure\OneDrive\Documents\GitHub\Csharp\Day3\carSaleInheritance\carSaleInheritance\bin\Debug\carSaleInheritance.exe.config
 C:\Users\laure\OneDrive\Documents\GitHub\Csharp\Day3\carSaleInheritance\carSaleInheritance\obj\Debug\carSaleInheritance.csprojResolveAssemblyReference.cache
+C:\Users\student\Documents\GitHub\Csharp\Day3\Day3\carSaleInheritance\carSaleInheritance\bin\Debug\carSaleInheritance.exe.config
+C:\Users\student\Documents\GitHub\Csharp\Day3\Day3\carSaleInheritance\carSaleInheritance\obj\Debug\carSaleInheritance.csprojResolveAssemblyReference.cache
+C:\Users\student\Documents\GitHub\Csharp\Day3\Day3\carSaleInheritance\carSaleInheritance\bin\Debug\carSaleInheritance.exe
+C:\Users\student\Documents\GitHub\Csharp\Day3\Day3\carSaleInheritance\carSaleInheritance\bin\Debug\carSaleInheritance.pdb
+C:\Users\student\Documents\GitHub\Csharp\Day3\Day3\carSaleInheritance\carSaleInheritance\obj\Debug\carSaleInheritance.exe
+C:\Users\student\Documents\GitHub\Csharp\Day3\Day3\carSaleInheritance\carSaleInheritance\obj\Debug\carSaleInheritance.pdb

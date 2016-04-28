@@ -51,7 +51,7 @@ namespace carSaleInheritance
             }
 
             Vehicle.numberOfVehicle--;
-        }
+        }//end vehicle sold ***************
 
 
         // Creating a new method for list Vehicler
@@ -71,7 +71,8 @@ namespace carSaleInheritance
 
             }
             Console.WriteLine();
-        }
+        }//end listvehicle method **************
+
         public static void DisplayAllVehicle(List<Vehicle> allVehicles)
         {
             foreach (Vehicle item in allVehicles)
@@ -92,15 +93,15 @@ namespace carSaleInheritance
 
                 Console.WriteLine();
 
-            }//end of if 
+            }//end of foreach
             Console.WriteLine(" The total  value of Vehicle sold is : £ {0}", Vehicle.totalValueSold);
             Console.WriteLine("The total value of Vehicle stock is : £ {0}", Vehicle.totalValueStock);
             Console.WriteLine();
-        }// end of  DisplayAllCars method
+        }// end of  DisplayAllCars method *************************
 
-    }//end listcar method
-
-    // inherited class car from Vehicle
+    }//end of vehicle class
+     //-------------------------------------end of Vehicle class -------------------------------------------------------------//
+     // inherited class car from Vehicle
     class Car : Vehicle
     {
         public static int numberOfCars;
@@ -116,62 +117,64 @@ namespace carSaleInheritance
         }
     }//end car class
 
+    //-------------------------------------end of Car class -------------------------------------------------------------//
     class Motorcycle : Vehicle
     {// beginning of Motorcycle
-        public static int numberOfBike;
-        public void AddMotorbike(string name, string model, string color, int price)
+        public static int numberOfBikes;
+        public void AddBike(string name, string model, string color, int price)
         {
-            AddVehicle(type = "Motorbike", name, model, color, price);
-            numberOfBike++;
+            AddVehicle(type = "motorbike", name, model, color, price);
+            numberOfBikes++;
         }
         public void SoldMotorbike(bool isSold, int price)
         {
             sold(isSold, price);
-            numberOfBike--;
+            numberOfBikes--;
         }
     }//end of Motorcycle class
+     //-------------------------------------end of Motorcycle class -------------------------------------------------------------//
     class program
     {
         static void Main(string[] args)
-
+        {
 
             Car.numberOfCars = 0;
-            Motorcycle.numberOfBike = 0;
+            Motorcycle.numberOfBikes = 0;
 
-               //Calling the car method 3 times to create new objects
-               List<Vehicle> allVehicles = new List<Vehicle>();
+            //Calling the car method 3 times to create new objects
+            List<Vehicle> allVehicles = new List<Vehicle>();
 
-        Car myCar = new Car();
-        myCar.AddCar("Peugoet", " 206", "blue", 15000);
-                allVehicles.Add(myCar);
+            Car myCar = new Car();
+            myCar.AddCar("Peugoet", " 206", "blue", 15000);
+            allVehicles.Add(myCar);
 
-                Car myCar1 = new Car();
-        myCar1.AddCar("Citroen", "C3", "grey", 25000);
-                allVehicles.Add(myCar1);
+            Car myCar1 = new Car();
+            myCar1.AddCar("Citroen", "C3", "grey", 25000);
+            allVehicles.Add(myCar1);
 
-                Car myCar2 = new Car();
-        myCar2.AddCar("Renault", "Espace", "green", 10000);
-                allVehicles.Add(myCar2);
-            
-                Motorcycle MyBike = new Motorcycle();
-        MyBike.AddMotorbike("Triumph", "Tiger 800", 10000);
-                allVehicles.Add(MyBike);
+            Car myCar2 = new Car();
+            myCar2.AddCar("Renault", "Espace", "green", 10000);
+            allVehicles.Add(myCar2);
 
-                Motorcycle Mybike2 = new Motorcycle();
-        MyBike2.AddMotorbike("Vespa", "Sprint 150", 2500);
-                allVehicles.Add(MyBike2);
+            Motorcycle MyBike = new Motorcycle();
+            MyBike.AddBike("Triumph", "Tiger 800","Red", 10000);
+            allVehicles.Add(MyBike);
 
-             Console.WriteLine("Total number of cars in stock is: {0}", Car.numberOfCars);
-            Console.WriteLine("Total number of motorbikes in stock is: {0}", Motorcycle.numberOfBike);
+            Motorcycle Mybike2 = new Motorcycle();
+            Mybike2.AddBike("Vespa", "Sprint 150","Black", 2500);
+            allVehicles.Add(Mybike2);
+
+            Console.WriteLine("Total number of cars in stock is: {0}", Car.numberOfCars);
+            Console.WriteLine("Total number of motorbikes in stock is: {0}", Motorcycle.numberOfBikes);
             Console.WriteLine();
-       
-Vehicle.DisplayAllVehicles(allVehicles);
-                        //calling the sold method 
-            myCar.soldCar(true, 15000);
-            myBike2.soldBike(true, 22000);
+
+            Vehicle.DisplayAllVehicle(allVehicles);
+            //calling the sold method 
+            myCar.Soldcar(true, 15000);
+            Mybike2.SoldMotorbike(true, 22000);
 
             Console.WriteLine("Total number of cars in sold is: {0}", Car.numberOfCars);
-            Console.WriteLine("Total number of motorbikes in sold is: {0}", Motorcycle.numberOfBike);
+            Console.WriteLine("Total number of motorbikes in sold is: {0}", Motorcycle.numberOfBikes);
             Console.WriteLine();
             Vehicle.DisplayAllVehicle(allVehicles);
             //get the total value of the stock
@@ -180,15 +183,22 @@ Vehicle.DisplayAllVehicles(allVehicles);
                 Vehicle.totalValueStock += item.price;
             }
 
-    Vehicle.DisplayAllVehicle(allVehicle);
+            Vehicle.DisplayAllVehicle(allVehicles);
 
 
-    //display cars data
-    Console.WriteLine("the name of car sold is", numberOfVehicle);
-       
-            Vehicle.DisplayAllVehicle(allVehicle);
+            //display cars data
+            Console.WriteLine("Total number of cars in stock is: {0}", Car.numberOfCars);
+            Console.WriteLine("Total number of motorbikes in stock is: {0}", Motorcycle.numberOfBikes);
+            Console.WriteLine();
+
+            Vehicle.DisplayAllVehicle(allVehicles);
+
+        }//end main
+    }//end of program class
+    //------------------------------------------ end of program class ---------------------------------------------------//
+}//end namespace
+//***********************************************************************************************************************************************************//
 
 
-            }//end of Vehicle 
-  //end of program
-    
+
+
